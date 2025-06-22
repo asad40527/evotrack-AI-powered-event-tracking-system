@@ -1,0 +1,95 @@
+<!-- Event Distribution -->
+<div class="rounded-xl border border-gray-200 bg-white p-5 shadow-theme-sm dark:border-gray-800 dark:bg-gray-900" id="event-container">
+    <div class="mb-6 flex items-center justify-between">
+        <h2 class="text-title-sm font-medium text-gray-800 dark:text-white/90">
+            <span class="mr-2 text-brand-500 dark:text-brand-400">
+                <i class="fas fa-calendar-alt"></i>
+            </span>
+            Events
+        </h2>
+        <div class="flex items-center gap-2">
+            <button class="flex h-8 w-8 items-center justify-center rounded-lg border border-gray-200 text-gray-700 hover:bg-gray-50 dark:border-gray-800 dark:text-gray-400 dark:hover:bg-white/5" title="Refresh" data-chart="eventChart">
+                <i class="fas fa-sync-alt text-sm"></i>
+            </button>
+        </div>
+    </div>
+    <div class="chart-wrapper">
+        <canvas id="eventChart" aria-label="Event distribution chart" class="w-full"></canvas>
+        <div class="chart-error text-error-500 text-theme-sm mt-2"></div>
+    </div>
+    <div class="mt-4 text-theme-xs text-gray-500 dark:text-gray-400">
+        <span>Last updated: <span class="update-time font-medium">-</span></span>
+    </div>
+</div>
+
+<!-- Device Distribution -->
+<div class="mt-6 rounded-xl border border-gray-200 bg-white p-5 shadow-theme-sm dark:border-gray-800 dark:bg-gray-900" id="device-container">
+    <div class="mb-6 flex items-center justify-between">
+        <h2 class="text-title-sm font-medium text-gray-800 dark:text-white/90">
+            <span class="mr-2 text-brand-500 dark:text-brand-400">
+                <i class="fas fa-mobile-alt"></i>
+            </span>
+            Devices
+        </h2>
+        <div class="flex items-center gap-2">
+            <button class="flex h-8 w-8 items-center justify-center rounded-lg border border-gray-200 text-gray-700 hover:bg-gray-50 dark:border-gray-800 dark:text-gray-400 dark:hover:bg-white/5" title="Refresh" data-chart="deviceChart">
+                <i class="fas fa-sync-alt text-sm"></i>
+            </button>
+        </div>
+    </div>
+    <div class="chart-wrapper">
+        <canvas id="deviceChart" aria-label="Device distribution chart" class="w-full"></canvas>
+        <div class="chart-error text-error-500 text-theme-sm mt-2"></div>
+    </div>
+    <div class="mt-4 text-theme-xs text-gray-500 dark:text-gray-400">
+        <span>Last updated: <span class="update-time font-medium">-</span></span>
+    </div>
+</div>
+
+<!-- Browser Usage -->
+<div class="mt-6 rounded-xl border border-gray-200 bg-white p-5 shadow-theme-sm dark:border-gray-800 dark:bg-gray-900" id="browser-container">
+    <div class="mb-6 flex items-center justify-between">
+        <h2 class="text-title-sm font-medium text-gray-800 dark:text-white/90">
+            <span class="mr-2 text-brand-500 dark:text-brand-400">
+                <i class="fas fa-globe"></i>
+            </span>
+            Browsers
+        </h2>
+        <div class="flex items-center gap-2">
+            <button class="flex h-8 w-8 items-center justify-center rounded-lg border border-gray-200 text-gray-700 hover:bg-gray-50 dark:border-gray-800 dark:text-gray-400 dark:hover:bg-white/5" title="Refresh" data-chart="browserChart">
+                <i class="fas fa-sync-alt text-sm"></i>
+            </button>
+        </div>
+    </div>
+    <div class="chart-wrapper">
+        <canvas id="browserChart" aria-label="Browser usage chart" class="w-full"></canvas>
+        <div class="chart-error text-error-500 text-theme-sm mt-2"></div>
+    </div>
+    <div class="mt-4 text-theme-xs text-gray-500 dark:text-gray-400">
+        <span>Last updated: <span class="update-time font-medium">-</span></span>
+    </div>
+</div>
+
+<!-- Time Distribution -->
+<div class="mt-6 rounded-xl border border-gray-200 bg-white p-5 shadow-theme-sm dark:border-gray-800 dark:bg-gray-900" id="time-container">
+    <div class="mb-6 flex items-center justify-between">
+        <h2 class="text-title-sm font-medium text-gray-800 dark:text-white/90">
+            <span class="mr-2 text-brand-500 dark:text-brand-400">
+                <i class="fas fa-clock"></i>
+            </span>
+            Time Distribution
+        </h2>
+        <div class="flex items-center gap-2">
+            <button class="flex h-8 w-8 items-center justify-center rounded-lg border border-gray-200 text-gray-700 hover:bg-gray-50 dark:border-gray-800 dark:text-gray-400 dark:hover:bg-white/5" title="Refresh" data-chart="timeChart">
+                <i class="fas fa-sync-alt text-sm"></i>
+            </button>
+        </div>
+    </div>
+    <div class="chart-wrapper">
+        <canvas id="timeChart" aria-label="Time distribution chart" class="w-full"></canvas>
+        <div class="chart-error text-error-500 text-theme-sm mt-2"></div>
+    </div>
+    <div class="mt-4 text-theme-xs text-gray-500 dark:text-gray-400">
+        <span>Last updated: <span class="update-time font-medium">-</span></span>
+    </div>
+</div>

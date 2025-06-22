@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth" >
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>EvoTrack Dashboard</title>
+  </head>
+  <body
+    x-data="{ page: 'ecommerce', loaded: true, darkMode: false, stickyMenu: false, sidebarToggle: false, scrollTop: false }"
+    x-init="
+      darkMode = JSON.parse(localStorage.getItem('darkMode'));
+      $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(value)))
+    "
+    :class="{ 'dark bg-gray-900': darkMode === true }"
+    class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white"
+  >
+    <!-- ===== Preloader Start ===== -->
+    <include src="./partials/preloader.html"></include>
+    <!-- ===== Preloader End ===== -->
+
+    <!-- ===== Page Wrapper Start ===== -->
+    <div class="flex h-screen overflow-hidden">
+      <!-- ===== Sidebar Start ===== -->
+      <include src="./partials/sidebar.html"></include>
+      <!-- ===== Sidebar End ===== -->
+
+      <!-- ===== Content Area Start ===== -->
+      <div class="relative flex flex-col flex-1 overflow-x-hidden overflow-y-auto">
+        <!-- Small Device Overlay Start -->
+        <include src="./partials/overlay.html"></include>
+        <!-- Small Device Overlay End -->
+
+        <!-- ===== Header Start ===== -->
+        <include src="./partials/header.html"></include>
+        <!-- ===== Header End ===== -->
+
+        <!-- ===== Main Content Start ===== -->
+        <main>
+          <div class="p-4 mx-auto max-w-7xl md:p-6">
+            <div class="grid grid-cols-12 gap-4 md:gap-6">
+              <div class="col-span-12 space-y-6 xl:col-span-7">
+                <!-- Metric Group One -->
+                <include src="./partials/metric-group/metric-group-01.html"></include>
+                <!-- Metric Group One -->
+
+                <!-- Chart One -->
+                <include src="./partials/chart/chart-04.html"></include>
+              </div>
+
+              <div class="col-span-12 xl:col-span-5 space-y-6">
+                <!-- Chart Two -->
+                <include src="./partials/chart/chart-02.html"></include>
+
+                <!-- Chart Three -->
+                <include src="./partials/chart/chart-03.html"></include>
+
+                <!-- Chart One Alternate -->
+                <include src="./partials/chart/chart-01.html"></include>
+
+                <!-- Chart Five -->
+                <include src="./partials/chart/chart-05.html"></include>
+
+                <!-- Chart Eight -->
+                <include src="./partials/chart/chart-08.html"></include>
+
+                <!-- Chart Nine -->
+                <include src="./partials/chart/chart-09.html"></include>
+
+                <!-- Chart Ten -->
+                <include src="./partials/chart/chart-10.html"></include>
+
+                <!-- Chart Eleven -->
+                <include src="./partials/chart/chart-11.html"></include>
+
+                <!-- Sentiment Chart -->
+                <include src="./partials/chart/sentimentChart.html"></include>
+              </div>
+
+              <div class="col-span-12 xl:col-span-5">
+                <!-- Map One -->
+                <include src="./partials/map-01.html"></include>
+              </div>
+
+              <div class="col-span-12 xl:col-span-7">
+                <!-- Table One -->
+                <include src="./partials/table/table-01.html"></include>
+              </div>
+            </div>
+          </div>
+        </main>
+        <!-- ===== Main Content End ===== -->
+
+        <!-- Chatbot included inside content area but outside main -->
+        <include src="./chatbot.html"></include>
+      </div>
+      <!-- ===== Content Area End ===== -->
+    </div>
+    <!-- ===== Page Wrapper End ===== -->
+  </body>
+</html>

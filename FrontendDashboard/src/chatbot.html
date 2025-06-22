@@ -1,0 +1,122 @@
+<!-- Chatbot Wrapper -->
+<div id="chatbot-wrapper" class="fixed bottom-6 right-6 z-[1000]">
+  <!-- Toggle Button -->
+  <button 
+    id="chatbot-toggle"
+    class="bg-indigo-600 hover:bg-indigo-700 text-white w-14 h-14 rounded-full shadow-lg transition-transform duration-200 hover:scale-110 flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-indigo-400"
+    aria-label="Toggle chatbot"
+    aria-haspopup="dialog"
+    aria-expanded="false"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+    </svg>
+  </button>
+
+  <!-- Chatbox -->
+  <div 
+    id="chatbot-box"
+    class="hidden fixed bottom-24 right-6 w-80 h-[500px] max-h-[80vh] bg-white dark:bg-gray-800 rounded-xl shadow-xl border border-gray-200 dark:border-gray-700 flex flex-col transition-all"
+    role="dialog"
+    aria-modal="true"
+    aria-label="AI chatbot panel"
+  >
+    <!-- Header -->
+    <div class="p-3 border-b bg-gray-50 dark:bg-gray-900 border-gray-200 dark:border-gray-700 flex justify-between items-center">
+      <h3 class="font-semibold text-gray-800 dark:text-white select-none">EvoBot Assistant</h3>
+      <button 
+        id="chatbot-close" 
+        class="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 rounded"
+        aria-label="Close chatbot"
+        title="Close chatbot"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+          <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Messages Container -->
+    <div 
+      id="chatbot-messages" 
+      class="flex-1 p-4 overflow-y-auto space-y-3 text-sm text-gray-800 dark:text-gray-200 scrollbar-thin scrollbar-thumb-gray-300 dark:scrollbar-thumb-gray-600"
+      role="log"
+      aria-live="polite"
+      aria-atomic="false"
+    >
+      <div id="messages-container" class="flex flex-col space-y-3" tabindex="0" aria-label="Chat messages">
+        <!-- Messages go here -->
+      </div>
+    </div>
+
+    <!-- Typing Indicator -->
+    <div id="typing-indicator" class="hidden px-4 pb-2 text-xs text-gray-500 dark:text-gray-400 italic select-none" aria-live="polite" aria-atomic="true">
+      Assistant is typing<span class="typing-dots">...</span>
+    </div>
+
+    <!-- Input Area -->
+    <div class="border-t border-gray-200 dark:border-gray-700 p-3 bg-gray-50 dark:bg-gray-900 flex flex-col space-y-2">
+      <div class="relative flex space-x-2">
+        <input
+          id="chatbot-input"
+          type="text"
+          placeholder="Type your message..."
+          class="flex-1 px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-full text-sm dark:bg-gray-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
+          maxlength="500"
+          autocomplete="off"
+          aria-label="Chat message input"
+        />
+        <button
+          id="chatbot-send"
+          class="bg-indigo-600 hover:bg-indigo-700 text-white rounded-full p-2 disabled:opacity-50 transition"
+          disabled
+          aria-label="Send message"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+            <path d="M2.94 2.94a1.5 1.5 0 012.12 0L10 7.88l4.94-4.94a1.5 1.5 0 012.12 2.12L12.12 10l4.94 4.94a1.5 1.5 0 01-2.12 2.12L10 12.12l-4.94 4.94a1.5 1.5 0 01-2.12-2.12L7.88 10 2.94 5.06a1.5 1.5 0 010-2.12z"/>
+          </svg>
+        </button>
+        <span id="char-counter" class="absolute -bottom-5 right-0 text-xs text-gray-500 dark:text-gray-400 hidden" aria-live="polite" aria-atomic="true">0/500</span>
+      </div>
+
+      <div class="flex justify-between items-center">
+        <button id="clear-history" class="text-xs text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 rounded">
+          Clear History
+        </button>
+        <div class="flex gap-3">
+          <button id="generate-report" class="text-xs text-indigo-600 hover:underline focus:outline-none focus:ring-2 focus:ring-indigo-500 rounded">
+            📊 Generate Report
+          </button>
+          <button id="send-report-email" class="text-xs text-indigo-600 hover:underline focus:outline-none focus:ring-2 focus:ring-indigo-500 rounded">
+            📤 Send Report
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Optional Templates -->
+<template id="loading-template">
+  <div class="flex justify-start">
+    <div class="max-w-[80%] bg-indigo-100 dark:bg-gray-700 rounded-lg p-3">
+      <div class="flex space-x-1">
+        <div class="w-2 h-2 bg-indigo-400 rounded-full animate-bounce"></div>
+        <div class="w-2 h-2 bg-indigo-400 rounded-full animate-bounce delay-100"></div>
+        <div class="w-2 h-2 bg-indigo-400 rounded-full animate-bounce delay-200"></div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template id="error-template">
+  <div class="flex justify-start">
+    <div class="max-w-[80%] bg-red-100 dark:bg-red-900/30 rounded-lg p-3 text-red-800 dark:text-red-200">
+      <p class="font-medium">⚠️ Error:</p>
+      <p class="error-message"></p>
+    </div>
+  </div>
+</template>
+
+<!-- ✅ Include html2pdf.js for PDF download -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
